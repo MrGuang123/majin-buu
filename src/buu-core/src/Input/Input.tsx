@@ -11,5 +11,3 @@ const Input = ({ className, invalid = false, ...others }: InputProps) => {
 }
 
 export default Input
-
-// Add required handling

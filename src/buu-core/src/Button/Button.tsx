@@ -18,7 +18,7 @@ const Button = ({
   ...others
 }: ButtonProps) => {
   return (
-    <button type={type} disabled={disabled} className={className} {...others}>
+    <button type={type} disabled={disabled} className={className} data-composable {...others}>
       {children}
     </button>
   )
