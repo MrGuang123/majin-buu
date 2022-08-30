@@ -1,0 +1,33 @@
+{
+  "plugins": [],
+  "include": [
+    "./"
+  ],
+  "exclude": [
+    "dist"
+  ],
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": false,
+    "noEmitOnError": true,
+    "types": [
+      "node",
+      "webpack",
+      "jest"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@buu/*": [
+        "src/buu-*/src"
+      ]
+    }
+  }
+}
