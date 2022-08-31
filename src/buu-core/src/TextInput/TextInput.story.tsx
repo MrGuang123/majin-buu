@@ -16,6 +16,7 @@ storiesOf('@buu/core/TextInput', module).add('General usage', () => {
   return (
     <div>
       <WrappedTextInput label="Email" required placeholder='Email' type='email' />
+      <WrappedTextInput label="Email" required placeholder='Email' type='email' icon="icon" />
       <WrappedTextInput label="Password" required placeholder='password' type='password' />
       <WrappedTextInput label="with error" placeholder='with error' error='this field is invalid' type='email' />
     </div>

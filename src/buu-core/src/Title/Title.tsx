@@ -20,4 +20,6 @@ const Title = ({
     )
 }
 
+Title.displayName = '@buu/core/Title'
+
 export default Title

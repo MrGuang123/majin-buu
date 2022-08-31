@@ -31,10 +31,12 @@ const InputWrapper = ({
       )}
       {children}
       {error && (
-        <Text theme='error' size='sm' className='error'>{error}</Text>
+        <Text theme='danger' size='sm' className='error'>{error}</Text>
       )}
     </div>
   )
 }
+
+InputWrapper.displayName = '@buu/core/InputWrapper'
 
 export default InputWrapper

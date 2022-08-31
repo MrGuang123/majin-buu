@@ -24,4 +24,6 @@ const Button = ({
   )
 }
 
+Button.displayName = '@buu/core/Button'
+
 export default Button

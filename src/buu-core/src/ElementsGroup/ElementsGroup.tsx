@@ -19,4 +19,6 @@ const ElementsGroup = ({
     )
 }
 
+ElementsGroup.displayName = '@buu/core/ElementsGroup'
+
 export default ElementsGroup

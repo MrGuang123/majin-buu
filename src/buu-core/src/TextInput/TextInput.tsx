@@ -9,6 +9,7 @@ interface TextInputProps extends DefaultProps, InputWrapperBaseProps, Omit<React
   value: string;
   onChange(value: string): void;
   id?: string;
+  icon?: React.ReactNode;
 }
 
 const TextInput = ({
@@ -21,6 +22,7 @@ const TextInput = ({
   value,
   style,
   onChange,
+  icon,
   ...others
 }: TextInputProps) => {
   const inputId = nanoid()
@@ -32,10 +34,13 @@ const TextInput = ({
         value={value}
         onChange={event => onChange(event.currentTarget.value)}
         invalid={!!error}
+        icon={icon}
         {...others}
       />
     </InputWrapper>
   )
 }
+
+TextInput.displayName = '@buu/core/TextInput'
 
 export default TextInput
