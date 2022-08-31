@@ -2,7 +2,7 @@
   "name": "@buu/tag-picker",
   "version": "1.0.0",
   "main": "dist/lib.js",
-  "types": "dist/buu-tag-picker/src/index.d.ts",
+  "types": "dist/buu-types/src/index.d.ts",
   "scripts": {
     "prepublish": "cd ../.. && npm run build @buu/tag-picker"
   },
