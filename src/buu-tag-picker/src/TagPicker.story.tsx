@@ -13,6 +13,8 @@ type TagPickerWrapperProps = Omit<
     | 'colors'
     | 'description'
     | 'createLabel'
+    | 'deleteLabel'
+    | 'noValueLabel'
     | 'onTagCreate'
     | 'onTagDelete'
     | 'onTagUpdate'
@@ -32,10 +34,17 @@ function TagPickerWrapper(props: TagPickerWrapperProps) {
             value={value}
             onChange={onChange}
             data={data}
+            searchPlaceholder="Search categories"
             colors={COLOR_THEME_LIST.map(theme => ({ name: theme, color: theme }))}
-            description="select or create"
+            description="select or create new one"
             createLabel="create new"
-            onTagCreate={(values) => setData(current => [...current, { ...values, id: nanoid() }])}
+            deleteLabel="delete one"
+            noValueLabel="not seleted"
+            onTagCreate={(values) => {
+                const tag = { ...values, id: nanoid() }
+                setData(current => [...current, { ...values, id: nanoid() }])
+                return tag;
+            }}
             onTagDelete={id => setData(current => current.filter(item => item.id !== id))}
             onTagUpdate={(id, values) => {
                 setData(current => {
