@@ -9,6 +9,7 @@ storiesOf('@buu/core/Text', module).add('General usage', () => {
             <Text bold>Bold text</Text>
             <Text theme='success'>success text</Text>
             <Text theme='warning'>warning text</Text>
+            <Text theme='primary'>primary text</Text>
             <Text theme='danger'>error text</Text>
             <Text theme='muted'>muted text</Text>
             <Text size='xs'>xs text</Text>
