@@ -23,6 +23,7 @@ export interface TagsListProps {
   onTagDelete(id: string): void;
   onChange(value: TagPickerTag): void;
   onHoveredChange(index: number): void;
+  onEventsCaptureChange(shouldCaptureEvents: boolean): void;
 }
 
 const TagList = ({
@@ -41,7 +42,8 @@ const TagList = ({
   onTagDelete,
   onTagUpdate,
   onChange,
-  onHoveredChange
+  onHoveredChange,
+  onEventsCaptureChange
 }: TagsListProps) => {
   const tags = data.map((tag, index) => (
     <TagItem
@@ -55,6 +57,7 @@ const TagList = ({
       colors={colors}
       deleteLabel={deleteLabel}
       onTagDelete={onTagDelete}
+      onEventsCaptureChange={onEventsCaptureChange}
     />
   ))
 

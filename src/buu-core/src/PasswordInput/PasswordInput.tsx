@@ -1,5 +1,5 @@
 import React from 'react'
-import { nanoid } from 'nanoid'
+import { useId } from '@buu/hooks'
 import { DefaultProps } from '@buu/types'
 import InputWrapper, { InputWrapperBaseProps } from '../InputWrapper/InputWrapper'
 import ActionIcon from '../ActionIcon/ActionIcon'
@@ -29,7 +29,7 @@ const PasswordInput = ({
   ...others
 }: PasswordInputProps) => {
   const [showPwd, setShowPwd] = useState(false)
-  const inputId = nanoid()
+  const inputId = useId(id)
 
   return (
     <InputWrapper

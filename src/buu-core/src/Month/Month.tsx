@@ -1,4 +1,4 @@
-import React, { ReducerAction, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { DefaultProps } from "@buu/types";
 import Text from "../Text/Text";
 import getMonthDays from "./get-month-days";
@@ -9,6 +9,7 @@ interface MonthProps extends DefaultProps {
     month: Date;
     locale?: string;
     selected?: Date;
+    autoFocus?: boolean;
     disableOutsideEvents?: boolean;
     onDayClick?(day: Date): void;
 }
@@ -18,6 +19,7 @@ export default function Month({
     month,
     selected,
     onDayClick,
+    autoFocus,
     disableOutsideEvents = false,
     locale = 'en'
 }: MonthProps) {
@@ -56,6 +58,20 @@ export default function Month({
             focusDay(currentDate, -1);
         }
     }
+
+    useEffect(() => {
+        if (autoFocus) {
+            const date = new Date(
+                month.getFullYear(),
+                month.getMonth(),
+                selected ? selected.getDate() : 1
+            ).toISOString()
+
+            if (date in daysRefs.current) {
+                daysRefs.current[date].focus()
+            }
+        }
+    }, [])
 
     const weekdays = getWeekdaysNames(locale).map(weekday => {
         return (

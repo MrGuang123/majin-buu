@@ -30,6 +30,7 @@ export default function TagPickerContainer(props: TagPickerProps) {
     const [hovered, setHovered] = useState(-1)
     const [query, setQuery] = useState('')
     const [createColor, setCreateColor] = useState(getRandomColor(props.colors))
+    const [shouldCaptureEvents, setShouldCaptureEvents] = useState(true)
 
     const closeDropdown = () => {
         setDropdownOpened(false)
@@ -68,7 +69,7 @@ export default function TagPickerContainer(props: TagPickerProps) {
         props.data.every(tag => tag.name.toLowerCase().trim() !== query.trim().toLowerCase())
 
     const handleKeyboardEvents = (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (this.state.dropdownOpened) {
+        if (dropdownOpened && shouldCaptureEvents) {
             const { code } = event.nativeEvent
 
             if (code === 'Escape') {
@@ -129,6 +130,7 @@ export default function TagPickerContainer(props: TagPickerProps) {
                 onTagDelete={props.onTagDelete}
                 onChange={handleChange}
                 onHoveredChange={setHovered}
+                onEventsCaptureChange={setShouldCaptureEvents}
             />
         </div>
     )

@@ -2,7 +2,7 @@ import React from "react";
 import { useId } from '@buu/hooks'
 import { DefaultProps } from "@buu/types";
 
-interface SwitchProps extends DefaultProps {
+interface CheckboxProps extends DefaultProps {
     value: boolean;
     onChange(value: boolean): void;
     label: React.ReactNode;
@@ -10,7 +10,7 @@ interface SwitchProps extends DefaultProps {
     id?: string;
 }
 
-export default function Switch({
+export default function Checkbox({
     className,
     value,
     onChange,
@@ -18,20 +18,21 @@ export default function Switch({
     disabled,
     id,
     ...others
-}: SwitchProps) {
+}: CheckboxProps) {
     const uuid = useId(id)
 
     return (
         <div className="wrapper" {...others}>
             <button
                 disabled={disabled}
-                className="switch"
+                className="checkbox"
                 type="button"
                 role="checkbox"
                 onClick={() => onChange(!value)}
-                aria-checked={value}
                 id={uuid}
-            />
+            >
+                {value && 'icon check'}
+            </button>
 
             <label className="label" htmlFor={uuid}>
                 {label}
@@ -40,4 +41,4 @@ export default function Switch({
     )
 }
 
-Switch.displayName = '@buu/core/Switch'
+Checkbox.displayName = '@buu/core/Checkbox'

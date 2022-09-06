@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useClickOutside } from '@buu/hooks'
 import { DropdownBody, Input, ActionIcon, ColorSwatch } from "@buu/core";
 import { TagPickerColor, TagPickerTag } from "../types";
 
@@ -42,6 +43,8 @@ const TagEdit = ({
     setValues(initialValues)
   }, [initialValues])
 
+  useClickOutside(dropdownRef, onClose)
+
   if (!opened) {
     return null
   }
@@ -67,6 +70,7 @@ const TagEdit = ({
         <Input
           value={values.name}
           onChange={event => handleNameChange(event.currentTarget.value)}
+          autoFocus
         />
         <ActionIcon theme="success" onClick={handleSubmit}>
           checkIcon

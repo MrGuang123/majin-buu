@@ -1,5 +1,5 @@
 import React from 'react'
-import { nanoid } from 'nanoid'
+import { useId } from '@buu/hooks'
 import Input from '../Input/Input'
 import InputWrapper, { InputWrapperBaseProps } from '../InputWrapper/InputWrapper'
 import { DefaultProps } from '@buu/types'
@@ -25,7 +25,7 @@ const TextInput = ({
   icon,
   ...others
 }: TextInputProps) => {
-  const inputId = nanoid()
+  const inputId = useId(id)
   return (
     <InputWrapper required={required} error={error} id={inputId} label={label} className={className} style={style}>
       <Input

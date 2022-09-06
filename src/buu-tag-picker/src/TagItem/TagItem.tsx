@@ -14,6 +14,7 @@ interface TagItemProps {
   onTagUpdate(id: string, values: Omit<TagPickerTag, 'id'>): void;
   onTagDelete(id: string): void;
   onHover(index: number): void;
+  onEventsCaptureChange(shouldCaptureEvents: boolean): void;
 }
 
 const TagItem = ({
@@ -25,9 +26,20 @@ const TagItem = ({
   onHover,
   deleteLabel,
   colors,
-  onTagDelete
+  onTagDelete,
+  onEventsCaptureChange
 }: TagItemProps) => {
   const [editDropdownOpened, setEditDropdownOpened] = useState(false)
+
+  const openEditDropdown = () => {
+    setEditDropdownOpened(true)
+    onEventsCaptureChange(false)
+  }
+
+  const closeEditDropdown = () => {
+    setEditDropdownOpened(false)
+    onEventsCaptureChange(true)
+  }
 
   return (
     <div
@@ -36,7 +48,7 @@ const TagItem = ({
     >
       <TagEdit
         opened={editDropdownOpened}
-        onClose={() => setEditDropdownOpened(false)}
+        onClose={closeEditDropdown}
         initialValues={data}
         deleteLabel={deleteLabel}
         colors={colors}
@@ -48,7 +60,7 @@ const TagItem = ({
         <button type="button" className="control" onClick={() => onSelect(data)}>
           <TagBadge data={data} />
         </button>
-        <ActionIcon onClick={() => setEditDropdownOpened(true)}>
+        <ActionIcon onClick={openEditDropdown}>
           dots horizontal icon
         </ActionIcon>
       </div>

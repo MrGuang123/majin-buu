@@ -1,5 +1,5 @@
 import React from "react";
-import { nanoid } from "nanoid";
+import { useId } from '@buu/hooks'
 import { DefaultProps } from "@buu/types";
 import InputWrapper, { InputWrapperBaseProps } from "../InputWrapper/InputWrapper";
 
@@ -8,12 +8,16 @@ interface SelectItem {
     label: string;
 }
 
-interface SelectProps extends DefaultProps, InputWrapperBaseProps {
+interface SelectProps
+    extends DefaultProps,
+    InputWrapperBaseProps,
+    Omit<React.HTMLProps<HTMLSelectElement>, 'data' | 'onChange'> {
     id?: string;
     value: string;
     placeholder?: string;
     onChange(value: string): void;
     data: SelectItem[];
+    disabled?: boolean;
 }
 
 export default function Select({
@@ -27,9 +31,10 @@ export default function Select({
     value,
     onChange,
     placeholder,
+    disabled,
     ...others
 }: SelectProps) {
-    const uuid = nanoid()
+    const uuid = useId(id)
 
     const options = data.map(item => (
         <option key={item.value} value={item.value}>
@@ -61,6 +66,7 @@ export default function Select({
                     value={value}
                     onChange={event => onChange(event.currentTarget.value)}
                     placeholder={placeholder}
+                    disabled={disabled}
                     {...others}
                 >
                     {options}
