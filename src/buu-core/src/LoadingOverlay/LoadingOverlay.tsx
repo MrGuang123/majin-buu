@@ -2,7 +2,7 @@ import React from "react";
 import { DefaultProps } from "@buu/types";
 import Loader from '../Loader/Loader'
 
-interface LoadingOverlayProps extends DefaultProps {
+interface LoadingOverlayProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     loaderSize?: number;
     visible: boolean;
 }

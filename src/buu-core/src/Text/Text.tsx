@@ -2,14 +2,14 @@ import React from 'react'
 import { DefaultProps, Size, Theme } from '@buu/types'
 
 interface TextProps extends DefaultProps {
-    component?: string;
+    component?: React.ElementType<any>;
     children?: React.ReactNode;
     size?: Size;
     theme?: Theme;
     bold?: boolean;
 }
 
-const Text = ({
+const Text = <T = Record<string, any>>({
     className,
     component = 'div',
     children,
@@ -17,7 +17,7 @@ const Text = ({
     bold = false,
     theme,
     ...others
-}: TextProps) => {
+}: TextProps & T) => {
     return React.createElement(
         component,
         {

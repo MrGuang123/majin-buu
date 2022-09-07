@@ -1,7 +1,7 @@
 import React from "react";
 import { DefaultProps } from "@buu/types";
 
-interface HrProps extends DefaultProps {
+interface HrProps extends DefaultProps, React.HTMLProps<HTMLHRElement> {
     type?: 'solid' | 'dashed' | 'dotted';
 }
 

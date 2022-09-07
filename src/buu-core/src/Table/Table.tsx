@@ -15,8 +15,8 @@ const Table = ({
 }: TableProps) => {
   return (
     <table
-      className='className'
       {...others}
+      className='className'
     >
       {children}
     </table>

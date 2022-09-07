@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useId } from '@buu/hooks'
 import { DefaultProps } from "@buu/types";
 import InputWrapper, { InputWrapperBaseProps } from "../InputWrapper/InputWrapper";
@@ -11,7 +11,7 @@ interface SelectItem {
 interface SelectProps
     extends DefaultProps,
     InputWrapperBaseProps,
-    Omit<React.HTMLProps<HTMLSelectElement>, 'data' | 'onChange'> {
+    Omit<React.HTMLProps<HTMLSelectElement>, 'data' | 'onChange' | 'ref'> {
     id?: string;
     value: string;
     placeholder?: string;
@@ -20,7 +20,7 @@ interface SelectProps
     disabled?: boolean;
 }
 
-export default function Select({
+const Select = forwardRef(({
     id,
     className,
     required,
@@ -33,7 +33,7 @@ export default function Select({
     placeholder,
     disabled,
     ...others
-}: SelectProps) {
+}: SelectProps, ref: React.ForwardedRef<HTMLSelectElement>) => {
     const uuid = useId(id)
 
     const options = data.map(item => (
@@ -61,13 +61,14 @@ export default function Select({
         >
             <div className="wrapper">
                 <select
+                    {...others}
+                    ref={ref}
                     className="select invalid placeholder"
                     id={uuid}
                     value={value}
                     onChange={event => onChange(event.currentTarget.value)}
                     placeholder={placeholder}
                     disabled={disabled}
-                    {...others}
                 >
                     {options}
                 </select>
@@ -75,6 +76,8 @@ export default function Select({
             </div>
         </InputWrapper>
     )
-}
+})
 
 Select.displayName = '@buu/core/Select'
+
+export default Select

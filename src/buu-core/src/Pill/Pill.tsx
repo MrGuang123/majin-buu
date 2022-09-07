@@ -1,7 +1,7 @@
 import React from "react";
 import { DefaultProps, ColorThemeList } from "@buu/types";
 
-interface PillProps extends DefaultProps {
+interface PillProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     theme?: ColorThemeList;
     children: React.ReactNode;
 }

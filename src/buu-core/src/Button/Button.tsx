@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { DefaultProps, ColorThemeList } from '@buu/types'
 
 
@@ -9,20 +9,27 @@ interface ButtonProps extends DefaultProps, React.HTMLProps<HTMLButtonElement> {
   children: string;
 }
 
-const Button = ({
+const Button = forwardRef(({
   className,
   theme = 'blue',
   type = 'button',
   disabled = false,
   children,
   ...others
-}: ButtonProps) => {
+}: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) => {
   return (
-    <button type={type} disabled={disabled} className={className} data-composable {...others}>
+    <button
+      {...others}
+      type={type}
+      disabled={disabled}
+      className={className}
+      data-composable
+      ref={ref}
+    >
       {children}
     </button>
   )
-}
+})
 
 Button.displayName = '@buu/core/Button'
 

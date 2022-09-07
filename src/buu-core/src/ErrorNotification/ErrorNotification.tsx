@@ -2,7 +2,7 @@ import React from "react";
 import { DefaultProps } from "@buu/types";
 import Text from "../Text/Text";
 
-interface ErrorNotificationProps extends DefaultProps {
+interface ErrorNotificationProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>, 'title'> {
     title?: React.ReactNode;
     description?: React.ReactNode;
     error?: Error;

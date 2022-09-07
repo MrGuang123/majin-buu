@@ -3,7 +3,6 @@ import { DefaultProps } from '@buu/types'
 
 interface ElementsGroupProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     position?: 'right' | 'center' | 'left';
-    children: React.ReactNode;
 }
 
 const ElementsGroup = ({
