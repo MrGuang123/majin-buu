@@ -17,6 +17,10 @@ interface TagPickerProps extends DefaultProps {
     deleteLabel: string;
     noValueLabel: string;
     searchPlaceholder?: string;
+    onDropdownOpen?(): void;
+    onDropdownClose?(): void;
+    onSearchChange?(query: string): void;
+    controlRef?: React.RefCallback<HTMLButtonElement>;
     onChange(value: TagPickerTag): void;
     onSearchChange?(query: string): void;
     onTagCreate(values: Omit<TagPickerTag, 'id'>): TagPickerTag;
@@ -33,15 +37,24 @@ export default function TagPickerContainer(props: TagPickerProps) {
     const [shouldCaptureEvents, setShouldCaptureEvents] = useState(true)
 
     const closeDropdown = () => {
-        setDropdownOpened(false)
-        setHovered(-1)
-        setQuery('')
-        controlRef.current.focus()
+        if (shouldCaptureEvents) {
+            setDropdownOpened(false)
+            setHovered(-1)
+            setQuery('')
+            controlRef.current.focus()
+            typeof props.onDropdownClose === 'function' && props.onDropdownClose()
+        }
+    }
+
+    const openDropdown = () => {
+        setDropdownOpened(true)
+        typeof props.onDropdownOpen === 'function' && props.onDropdownOpen()
     }
 
     const handleSearchChange = (value: string) => {
         setQuery(value)
         setHovered(0)
+        typeof props.onSearchChange === 'function' && props.onSearchChange(value)
     }
 
     const handleCreate = () => {
@@ -112,8 +125,11 @@ export default function TagPickerContainer(props: TagPickerProps) {
                 searchQuery={query}
                 hovered={hovered}
                 dropdownOpened={dropdownOpened}
-                controlRef={controlRef}
-                openDropdown={() => setDropdownOpened(true)}
+                controlRef={(node: HTMLButtonElement) => {
+                    controlRef.current = node
+                    typeof props.controlRef === 'function' && props.controlRef(node)
+                }}
+                openDropdown={openDropdown}
                 closeDropdown={closeDropdown}
                 description={props.description}
                 searchPlaceholder={props.searchPlaceholder}

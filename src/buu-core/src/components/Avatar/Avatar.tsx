@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { DefaultProps } from "@buu/types";
 
 interface AvatarProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
@@ -8,6 +8,8 @@ interface AvatarProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
 }
 
 export default function Avatar({ className, size = 60, style, src, alt, ...others }: AvatarProps) {
+    const [error, setError] = useState(!src)
+
     return (
         <div
             {...others}
@@ -15,7 +17,13 @@ export default function Avatar({ className, size = 60, style, src, alt, ...other
             className="avatar"
             style={{ ...style, width: size, height: size, borderRadius: size }}
         >
-            <img className="image" src={src} alt={alt} />
+            {error ? (
+                <div className="placeholder" style={{ width: size, height: size, borderRadius: size }}>
+                    AvatarIcon
+                </div>
+            ) : (
+                <img className="image" src={src} alt={alt} onError={() => setError(true)} />
+            )}
         </div>
     )
 }

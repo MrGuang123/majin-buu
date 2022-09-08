@@ -1,8 +1,9 @@
 import React, { forwardRef } from 'react'
-import { DefaultProps, ColorThemeList } from '@buu/types'
+import { DefaultProps, ColorThemeList, Size } from '@buu/types'
 
 
-interface ButtonProps extends DefaultProps, React.HTMLProps<HTMLButtonElement> {
+interface ButtonProps extends DefaultProps, Omit<React.HTMLProps<HTMLButtonElement>, 'size'> {
+  size?: Size;
   type?: 'submit' | 'button' | 'reset';
   theme?: ColorThemeList;
   disabled?: boolean;
@@ -11,6 +12,7 @@ interface ButtonProps extends DefaultProps, React.HTMLProps<HTMLButtonElement> {
 
 const Button = forwardRef(({
   className,
+  size = 'md',
   theme = 'blue',
   type = 'button',
   disabled = false,

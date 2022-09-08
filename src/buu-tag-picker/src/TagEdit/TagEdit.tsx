@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useClickOutside } from '@buu/hooks'
 import { DropdownBody, Input, ActionIcon, ColorSwatch } from "@buu/core";
 import { TagPickerColor, TagPickerTag } from "../types";
@@ -24,7 +24,6 @@ const TagEdit = ({
   onTagDelete,
   id
 }: TagEditProps) => {
-  const dropdownRef = useRef<HTMLDivElement>()
   const [values, setValues] = useState<Omit<TagPickerTag, 'id'>>()
   const handleNameChange = (value: string) => setValues(current => ({ ...current, name: value }))
   const handleColorChange = (value: string) => setValues(current => ({ ...current, color: value }))
@@ -43,7 +42,7 @@ const TagEdit = ({
     setValues(initialValues)
   }, [initialValues])
 
-  useClickOutside(dropdownRef, onClose)
+  const dropdownRef = useClickOutside(onClose)
 
   if (!opened) {
     return null
@@ -65,7 +64,7 @@ const TagEdit = ({
   ))
 
   return (
-    <DropdownBody className="tagEdit" elementRef={dropdownRef} noPadding>
+    <DropdownBody className="tagEdit" ref={dropdownRef} noPadding>
       <div className="header">
         <Input
           value={values.name}

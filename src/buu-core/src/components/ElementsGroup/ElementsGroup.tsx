@@ -3,12 +3,14 @@ import { DefaultProps } from '@buu/types'
 
 interface ElementsGroupProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     position?: 'right' | 'center' | 'left';
+    noWrap?: boolean;
 }
 
 const ElementsGroup = ({
     className,
     position = 'left',
     children,
+    noWrap = false,
     ...others
 }: ElementsGroupProps) => {
     return (

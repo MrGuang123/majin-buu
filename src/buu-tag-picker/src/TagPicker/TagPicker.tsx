@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useClickOutside } from '@buu/hooks'
 import { DropdownBody } from '@buu/core'
 import TagsList, { TagsListProps } from '../TagList/TagList'
@@ -6,7 +6,7 @@ import TagBadge from '../TagBadge/TagBadge'
 
 interface TagPickerProps extends TagsListProps {
     dropdownOpened: boolean;
-    controlRef: React.RefObject<HTMLButtonElement>;
+    controlRef: React.RefCallback<HTMLButtonElement>;
     openDropdown(): void;
     closeDropdown(): void;
     onEventsCaptureChange(shouldCaptureEvents: boolean): void;
@@ -22,9 +22,7 @@ const TagPicker = ({
     noValueLabel,
     ...others
 }: TagPickerProps) => {
-    const dropdownRef = useRef<HTMLDivElement>()
-
-    useClickOutside(dropdownRef, closeDropdown)
+    const dropdownRef = useClickOutside(closeDropdown)
 
     return (
         <div className="tagPicker">
@@ -34,7 +32,7 @@ const TagPicker = ({
 
             {
                 dropdownOpened && (
-                    <DropdownBody className="dropdown" elementRef={dropdownRef} noPadding>
+                    <DropdownBody className="dropdown" ref={dropdownRef} noPadding>
                         <TagsList value={value} {...others} />
                     </DropdownBody>
                 )

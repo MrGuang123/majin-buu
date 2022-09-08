@@ -2,7 +2,7 @@ import React, { forwardRef, useState } from 'react'
 import { useId } from '@buu/hooks'
 import { DefaultProps } from '@buu/types'
 import InputWrapper, { InputWrapperBaseProps } from '../InputWrapper/InputWrapper'
-import ActionIcon from '../ActionIcon/ActionIcon'
+import ActionIcon from '../components/ActionIcon/ActionIcon'
 import Input from '../Input/Input'
 
 interface PasswordInputProps
