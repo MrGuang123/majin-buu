@@ -1,11 +1,11 @@
 import React from 'react'
-import { DefaultProps, Size, Theme } from '@buu/types'
+import { useBuuTheme, DefaultProps, BuuColor, BuuSize } from '@buu/theme'
 
 interface TextProps extends DefaultProps {
     component?: React.ElementType<any>;
     children?: React.ReactNode;
-    size?: Size;
-    theme?: Theme;
+    size?: BuuSize;
+    color?: BuuColor;
     bold?: boolean;
     semibold?: boolean;
 }
@@ -17,7 +17,8 @@ const Text = <T = Record<string, any>>({
     size = 'md',
     bold = false,
     semibold = false,
-    theme,
+    color,
+    themeOverride,
     ...others
 }: TextProps & T) => {
     return React.createElement(

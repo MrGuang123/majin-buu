@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps, useBuuTheme } from '@buu/theme'
 import { clsx } from 'clsx'
 
 interface InputProps extends DefaultProps, Omit<React.HTMLProps<HTMLInputElement>, 'ref'> {
@@ -16,6 +16,7 @@ const Input = forwardRef(({
   icon,
   style,
   inputClassName,
+  themeOverride,
   ...others
 }: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
   return (

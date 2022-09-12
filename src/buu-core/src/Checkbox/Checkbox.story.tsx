@@ -10,7 +10,8 @@ function CheckboxWrapper(props: Omit<React.ComponentProps<typeof Checkbox>, 'val
 
 storiesOf('@buu/core', module).add('Checkbox', () => (
     <>
-        <CheckboxWrapper label="open dialog" />
+        <CheckboxWrapper label="open dialog" color="teal" />
+        <CheckboxWrapper label="open dialog" color="blue" />
         <CheckboxWrapper label="open dialog" disabled style={{ marginTop: 15 }} />
     </>
 ))

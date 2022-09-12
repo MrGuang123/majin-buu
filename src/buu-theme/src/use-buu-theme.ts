@@ -1,12 +1,14 @@
-import { useTheme } from "./theme-context";
-import { BuuTheme } from "./types";
+import type OpenColor from "open-color";
 
-export function useBuuTheme() {
+import { useTheme } from "./theme-context";
+import { BuuTheme, BuuThemeOverride } from "./types";
+
+export function useBuuTheme(themeOverride?: BuuThemeOverride) {
     const theme = useTheme<BuuTheme>()
 
     if (!theme.__buu_theme) {
-        throw new Error('buuThemeProvider was not found')
+        throw new Error('buuProvider was not found')
     }
 
-    return theme
+    return { ...theme, ...themeOverride }
 }

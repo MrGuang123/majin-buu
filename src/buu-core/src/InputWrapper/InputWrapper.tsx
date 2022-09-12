@@ -1,5 +1,5 @@
 import React from 'react'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps, useBuuTheme } from '@buu/theme'
 import Text from '../Text/Text'
 
 export interface InputWrapperBaseProps {
@@ -19,6 +19,7 @@ const InputWrapper = ({
   id,
   required,
   error,
+  themeOverride,
   ...others
 }: InputWrapperProps) => {
   return (

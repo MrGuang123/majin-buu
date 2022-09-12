@@ -1,17 +1,21 @@
 import React from 'react'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps, useBuuTheme } from '@buu/theme'
 
-interface TitleProps extends DefaultProps, Omit<React.HTMLProps<HTMLHeadingElement>, 'children'> {
+interface TitleProps extends DefaultProps, React.HTMLProps<HTMLHeadingElement> {
     order?: 1 | 2 | 3 | 4 | 5 | 6;
-    children?: React.ReactNode;
 }
 
 const Title = ({
     className,
+    themeOverride,
     order = 1,
-    children
+    style,
+    children,
+    ...others
 }: TitleProps) => {
     const element = `h${order}`
+    const theme = useBuuTheme(themeOverride)
+    const [fontSize, lineHeight] = theme.headings[element]
 
     return React.createElement(
         element,

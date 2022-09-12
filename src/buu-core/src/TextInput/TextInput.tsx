@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import { useId } from '@buu/hooks'
 import Input from '../Input/Input'
 import InputWrapper, { InputWrapperBaseProps } from '../InputWrapper/InputWrapper'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps } from '@buu/theme'
 
 interface TextInputProps extends DefaultProps, InputWrapperBaseProps, Omit<React.HTMLProps<HTMLInputElement>, 'onChange' | 'ref'> {
   type?: 'text' | 'password' | 'email' | 'search' | 'tel' | 'url';
@@ -23,11 +23,20 @@ const TextInput = forwardRef(({
   style,
   onChange,
   icon,
+  themeOverride,
   ...others
 }: TextInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
   const inputId = useId(id)
   return (
-    <InputWrapper required={required} error={error} id={inputId} label={label} className={className} style={style}>
+    <InputWrapper
+      required={required}
+      error={error}
+      id={inputId}
+      label={label}
+      className={className}
+      style={style}
+      themeOverride={themeOverride}
+    >
       <Input
         {...others}
         ref={ref}
@@ -37,6 +46,7 @@ const TextInput = forwardRef(({
         onChange={event => onChange(event.currentTarget.value)}
         invalid={!!error}
         icon={icon}
+        themeOverride={themeOverride}
       />
     </InputWrapper>
   )

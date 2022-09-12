@@ -6,17 +6,20 @@ import ActionIcon from "./ActionIcon";
 storiesOf('@buu/core', module).add('ActionIcon', () => {
   return (
     <BuuProvider>
-      <div>
+      <div color="gray">
         <ActionIcon>icon1</ActionIcon>
       </div>
       <div>
-        <ActionIcon theme="danger">icon2</ActionIcon>
+        <ActionIcon color="blue">icon2</ActionIcon>
       </div>
       <div>
-        <ActionIcon theme="warning">icon3</ActionIcon>
+        <ActionIcon color="red">icon3</ActionIcon>
       </div>
       <div>
-        <ActionIcon theme="success">icon4</ActionIcon>
+        <ActionIcon color="yellow">icon4</ActionIcon>
+      </div>
+      <div>
+        <ActionIcon color="teal">icon5</ActionIcon>
       </div>
     </BuuProvider>
   )

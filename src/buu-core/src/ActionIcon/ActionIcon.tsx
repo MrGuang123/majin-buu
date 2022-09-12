@@ -1,14 +1,12 @@
 import React, { forwardRef } from 'react'
-import { DefaultProps, Theme } from '@buu/types'
-import { useBuuTheme } from '@buu/theme'
+import { useBuuTheme, DefaultProps, BuuColor } from '@buu/theme'
 
 interface ActionIconProps extends DefaultProps, Omit<React.HTMLProps<HTMLButtonElement>, 'ref'> {
-  theme?: Theme;
-  children: React.ReactNode;
+  color?: BuuColor;
 }
 
 const ActionIcon = forwardRef((
-  { className, theme = 'muted', children, ...others }: ActionIconProps,
+  { className, color = 'blue', children, themeOverride, ...others }: ActionIconProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) => {
   return (
