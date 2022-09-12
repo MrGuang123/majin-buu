@@ -1,0 +1,14 @@
+{
+    "name": "@buu/theme",
+    "version": "1.0.0",
+    "main": "dist/lib.js",
+    "types": "dist/buu-theme/src/index.d.ts",
+    "scripts": {
+        "prepublish": "cd ../.. && npm run build @buu/theme"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

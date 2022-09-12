@@ -24,6 +24,7 @@ const TagEdit = ({
   onTagDelete,
   id
 }: TagEditProps) => {
+  const dropdownRef = useClickOutside(onClose)
   const [values, setValues] = useState<Omit<TagPickerTag, 'id'>>()
   const handleNameChange = (value: string) => setValues(current => ({ ...current, name: value }))
   const handleColorChange = (value: string) => setValues(current => ({ ...current, color: value }))
@@ -31,6 +32,12 @@ const TagEdit = ({
   const handleSubmit = () => {
     onTagUpdate(id, { name: values.name, color: values.color })
     onClose()
+  }
+
+  const handleKeyDownCapture = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.nativeEvent.code === 'Escape') {
+      onClose()
+    }
   }
 
   const handleDelete = () => {
@@ -41,8 +48,6 @@ const TagEdit = ({
   useEffect(() => {
     setValues(initialValues)
   }, [initialValues])
-
-  const dropdownRef = useClickOutside(onClose)
 
   if (!opened) {
     return null
@@ -64,11 +69,18 @@ const TagEdit = ({
   ))
 
   return (
-    <DropdownBody className="tagEdit" ref={dropdownRef} noPadding>
+    <DropdownBody
+      className="tagEdit"
+      ref={dropdownRef}
+      noPadding
+      onKeyDownCapture={handleKeyDownCapture}
+    >
       <div className="header">
         <Input
+          className="input"
           value={values.name}
           onChange={event => handleNameChange(event.currentTarget.value)}
+          onKeyDown={event => event.nativeEvent.code === 'Enter' && handleSubmit()}
           autoFocus
         />
         <ActionIcon theme="success" onClick={handleSubmit}>

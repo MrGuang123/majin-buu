@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ActionIcon } from '@buu/core'
 import { TagPickerColor, TagPickerTag } from "../types";
 import TagEdit from '../TagEdit/TagEdit'
@@ -29,6 +29,7 @@ const TagItem = ({
   onTagDelete,
   onEventsCaptureChange
 }: TagItemProps) => {
+  const controlRef = useRef<HTMLButtonElement>()
   const [editDropdownOpened, setEditDropdownOpened] = useState(false)
 
   const openEditDropdown = () => {
@@ -39,6 +40,7 @@ const TagItem = ({
   const closeEditDropdown = () => {
     setEditDropdownOpened(false)
     onEventsCaptureChange(true)
+    setImmediate(() => controlRef.current.focus())
   }
 
   return (
@@ -60,7 +62,7 @@ const TagItem = ({
         <button type="button" className="control" onClick={() => onSelect(data)}>
           <TagBadge data={data} />
         </button>
-        <ActionIcon onClick={openEditDropdown}>
+        <ActionIcon onClick={openEditDropdown} ref={controlRef}>
           dots horizontal icon
         </ActionIcon>
       </div>

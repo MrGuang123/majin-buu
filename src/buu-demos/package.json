@@ -1,0 +1,14 @@
+{
+    "name": "@buu/demos",
+    "version": "1.0.0",
+    "main": "dist/lib.js",
+    "types": "dist/buu-demos/src/index.d.ts",
+    "scripts": {
+        "prepublish": "cd ../.. && npm run build @buu/demos"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}
