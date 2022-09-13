@@ -1,6 +1,6 @@
 import React from "react";
 import { useClickOutside } from '@buu/hooks'
-import { DropdownBody } from '@buu/core'
+import { DropdownBody, useBuuTheme } from '@buu/core'
 import TagsList, { TagsListProps } from '../TagList/TagList'
 import TagBadge from '../TagBadge/TagBadge'
 

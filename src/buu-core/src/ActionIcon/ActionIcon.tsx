@@ -6,7 +6,7 @@ interface ActionIconProps extends DefaultProps, Omit<React.HTMLProps<HTMLButtonE
 }
 
 const ActionIcon = forwardRef((
-  { className, color = 'blue', children, themeOverride, ...others }: ActionIconProps,
+  { className, color, children, themeOverride, ...others }: ActionIconProps,
   ref: React.ForwardedRef<HTMLButtonElement>
 ) => {
   return (

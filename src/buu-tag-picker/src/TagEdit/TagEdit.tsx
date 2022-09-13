@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useClickOutside } from '@buu/hooks'
 import { DropdownBody, Input, ActionIcon, ColorSwatch } from "@buu/core";
+import { useBuuTheme, BuuThemeOverride } from "@buu/theme";
 import { TagPickerColor, TagPickerTag } from "../types";
 
 export interface TagEditProps {
@@ -12,6 +13,7 @@ export interface TagEditProps {
   onTagDelete(id: string): void;
   onClose(): void;
   id: string;
+  themeOverride?: BuuThemeOverride;
 }
 
 const TagEdit = ({
@@ -22,7 +24,8 @@ const TagEdit = ({
   colors,
   onTagUpdate,
   onTagDelete,
-  id
+  id,
+  themeOverride
 }: TagEditProps) => {
   const dropdownRef = useClickOutside(onClose)
   const [values, setValues] = useState<Omit<TagPickerTag, 'id'>>()
@@ -83,7 +86,7 @@ const TagEdit = ({
           onKeyDown={event => event.nativeEvent.code === 'Enter' && handleSubmit()}
           autoFocus
         />
-        <ActionIcon theme="success" onClick={handleSubmit}>
+        <ActionIcon color="teal" onClick={handleSubmit}>
           checkIcon
         </ActionIcon>
       </div>

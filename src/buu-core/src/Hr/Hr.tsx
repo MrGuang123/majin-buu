@@ -1,6 +1,5 @@
 import React from "react";
-import { DefaultProps } from "@buu/types";
-import { useBuuTheme } from '@buu/theme'
+import { useBuuTheme, DefaultProps } from '@buu/theme'
 
 interface HrProps extends DefaultProps, React.HTMLProps<HTMLHRElement> {
     type?: 'solid' | 'dashed' | 'dotted';

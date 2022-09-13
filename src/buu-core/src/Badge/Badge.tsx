@@ -1,16 +1,15 @@
 import React from 'react'
-import { useBuuTheme } from '@buu/theme';
-import { DefaultProps, ColorThemeList, COLOR_THEME_LIST } from '@buu/types'
+import { useBuuTheme, DefaultProps, BuuColor } from '@buu/theme';
 
 type BadgeVariant = 'badge' | 'pill' | 'outline';
 
 interface BadgeProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
-  color?: ColorThemeList;
+  color?: BuuColor;
   variant?: BadgeVariant;
 }
 
-function getVariantStyle(variant: BadgeVariant, theme: ColorThemeList) {
-  const ocTheme = COLOR_THEME_LIST.includes(theme) ? theme : 'gray';
+function getVariantStyle(variant: BadgeVariant, color: BuuColor) {
+  const ocTheme = color || 'gray';
 
   switch (variant) {
     case 'badge':
@@ -29,7 +28,7 @@ function getVariantStyle(variant: BadgeVariant, theme: ColorThemeList) {
 
 const Badge = ({
   className,
-  color = 'grey',
+  color,
   variant = 'badge',
   children,
   style,

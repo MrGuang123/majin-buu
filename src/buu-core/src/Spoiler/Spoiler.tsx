@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { DefaultProps } from "@buu/types";
+import { DefaultProps, useBuuTheme } from "@buu/theme";
 
 interface SpoilerProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     maxHeight: number;
@@ -16,6 +16,7 @@ export default function Spoiler({
     hideLabel,
     showLabel,
     overlayColor = '#fff',
+    themeOverride,
     ...others
 }: SpoilerProps) {
     const [show, setShowState] = useState(false)

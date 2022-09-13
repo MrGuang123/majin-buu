@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultProps } from "@buu/types";
+import { DefaultProps } from "@buu/theme";
 import Loader from '../Loader/Loader'
 
 interface LoadingOverlayProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
@@ -11,6 +11,7 @@ export default function LoadingOverlay({
     className,
     visible,
     loaderSize,
+    themeOverride,
     ...others
 }: LoadingOverlayProps) {
     if (!visible) {
@@ -19,7 +20,7 @@ export default function LoadingOverlay({
 
     return (
         <div className="loadingOverlay" {...others}>
-            <Loader size={loaderSize} />
+            <Loader size={loaderSize} themeOverride={themeOverride} />
         </div>
     )
 }

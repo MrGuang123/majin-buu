@@ -1,9 +1,10 @@
 import React, { forwardRef } from "react";
 import { useId } from '@buu/hooks'
-import { DefaultProps, useBuuTheme, BuuColor } from "@buu/theme";
+import { DefaultProps, useBuuTheme, BuuColor, BuuSize } from "@buu/theme";
 
-interface CheckboxProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>, 'label' | 'value' | 'onChange'> {
+interface CheckboxProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>, 'label' | 'value' | 'onChange' | 'size'> {
     color?: BuuColor;
+    size?: BuuSize | number;
     value: boolean;
     onChange(value: boolean): void;
     label: React.ReactNode;
@@ -17,11 +18,12 @@ const Checkbox = forwardRef(
             className,
             value,
             onChange,
-            color = 'blue',
+            color,
             themeOverride,
             label,
             disabled,
             id,
+            size,
             ...others
         }: CheckboxProps,
         ref: React.ForwardedRef<HTMLButtonElement>

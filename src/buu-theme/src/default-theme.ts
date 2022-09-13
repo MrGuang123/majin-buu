@@ -5,13 +5,20 @@ export const DEFAULT_THEME: BuuTheme = {
     __buu_theme: true,
     colors: OpenColor,
     fontFamily: 'pingfang',
-    primaryColor: 'blue',
+    primaryColor: 'green',
     fontSize: {
         xs: 12,
         sm: 14,
         md: 16,
         lg: 18,
         xl: 20,
+    },
+    spacing: {
+        xs: 10,
+        sm: 12,
+        md: 16,
+        lg: 20,
+        xl: 24,
     },
     headings: {
         h1: [38, 1.2],

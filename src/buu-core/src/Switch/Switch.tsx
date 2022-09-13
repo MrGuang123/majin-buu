@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { useId } from '@buu/hooks'
-import { DefaultProps } from "@buu/types";
+import { BuuColor, DefaultProps, useBuuTheme } from "@buu/theme";
 
 interface SwitchProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>, 'label' | 'value' | 'onChange'> {
     value: boolean;
@@ -8,11 +8,13 @@ interface SwitchProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>
     label: React.ReactNode;
     disabled?: boolean;
     id?: string;
+    color?: BuuColor;
 }
 
 const Switch = forwardRef(({
     className,
     value,
+    color,
     onChange,
     label,
     disabled,

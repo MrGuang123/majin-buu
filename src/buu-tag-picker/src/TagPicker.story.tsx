@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { storiesOf } from '@storybook/react'
 import { nanoid } from "nanoid";
-import { COLOR_THEME_LIST } from "@buu/types";
 import TagPicker from "./TagPickerContainer";
 import { TagPickerTag } from "./types";
+import { BuuProvider, DEFAULT_THEME, BuuColor } from '@buu/theme'
 
 type TagPickerWrapperProps = Omit<
     React.ComponentProps<typeof TagPicker>,
@@ -20,6 +20,10 @@ type TagPickerWrapperProps = Omit<
     | 'onTagUpdate'
 >;
 
+const colors = Object.keys(DEFAULT_THEME.colors).filter(
+    (color) => color !== 'white' && color !== 'black'
+) as BuuColor[];
+
 const defaultData: TagPickerTag[] = [
     { id: '1', name: 'hello', color: 'red' },
     { id: '2', name: 'world', color: 'blue' },
@@ -35,7 +39,7 @@ function TagPickerWrapper(props: TagPickerWrapperProps) {
             onChange={onChange}
             data={data}
             searchPlaceholder="Search categories"
-            colors={COLOR_THEME_LIST.map(theme => ({ name: theme, color: theme }))}
+            colors={colors.map(theme => ({ name: theme, color: theme }))}
             description="select or create new one"
             createLabel="create new"
             deleteLabel="delete one"

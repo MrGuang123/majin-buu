@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { ActionIcon } from '@buu/core'
+import { useBuuTheme, BuuThemeOverride } from "@buu/theme";
 import { TagPickerColor, TagPickerTag } from "../types";
 import TagEdit from '../TagEdit/TagEdit'
 import TagBadge from '../TagBadge/TagBadge'
@@ -15,6 +16,7 @@ interface TagItemProps {
   onTagDelete(id: string): void;
   onHover(index: number): void;
   onEventsCaptureChange(shouldCaptureEvents: boolean): void;
+  themeOverride?: BuuThemeOverride;
 }
 
 const TagItem = ({
@@ -27,7 +29,8 @@ const TagItem = ({
   deleteLabel,
   colors,
   onTagDelete,
-  onEventsCaptureChange
+  onEventsCaptureChange,
+  themeOverride
 }: TagItemProps) => {
   const controlRef = useRef<HTMLButtonElement>()
   const [editDropdownOpened, setEditDropdownOpened] = useState(false)

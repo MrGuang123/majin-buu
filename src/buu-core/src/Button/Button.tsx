@@ -1,24 +1,13 @@
 import React, { forwardRef } from 'react'
-import { DefaultProps, ColorThemeList, Size } from '@buu/types'
-import { useBuuTheme } from '@buu/theme';
-import Loader from '../Loader/Loader'
+import { useBuuTheme, DefaultProps, BuuColor, BuuSize } from '@buu/theme';
 
 
 interface ButtonProps extends DefaultProps, Omit<React.HTMLProps<HTMLButtonElement>, 'size'> {
-  size?: Size;
+  size?: BuuSize;
   type?: 'submit' | 'button' | 'reset';
-  color?: ColorThemeList;
+  color?: BuuColor;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
-  loading?: boolean;
-}
-
-const loader_size = {
-  xs: 8,
-  sm: 10,
-  md: 12,
-  lg: 14,
-  xl: 16
 }
 
 const Button = forwardRef(({
@@ -30,7 +19,6 @@ const Button = forwardRef(({
   children,
   leftIcon,
   rightIcon,
-  loading,
   ...others
 }: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) => {
   return (
@@ -42,10 +30,6 @@ const Button = forwardRef(({
       data-composable
       ref={ref}
     >
-      {loading && (
-        <Loader color={color || 'blue'} size={loader_size[size]} className="loader" />
-      )}
-      {!loading && leftIcon && <span className='lefticon'>{leftIcon}</span>}
       <span>{children}</span>
       {rightIcon && <span className='rightIcon'>{rightIcon}</span>}
     </button>

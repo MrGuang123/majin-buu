@@ -1,8 +1,8 @@
 import React, { forwardRef, useState } from 'react'
 import { useId } from '@buu/hooks'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps } from '@buu/theme'
 import InputWrapper, { InputWrapperBaseProps } from '../InputWrapper/InputWrapper'
-import ActionIcon from '../components/ActionIcon/ActionIcon'
+import ActionIcon from '../ActionIcon/ActionIcon'
 import Input from '../Input/Input'
 
 interface PasswordInputProps
@@ -25,6 +25,7 @@ const PasswordInput = forwardRef(({
   style,
   onChange,
   icon,
+  themeOverride,
   ...others
 }: PasswordInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
   const [showPwd, setShowPwd] = useState(false)
@@ -38,6 +39,7 @@ const PasswordInput = forwardRef(({
       label={label}
       error={error}
       style={style}
+      themeOverride={themeOverride}
     >
       <div className={className}>
         <Input
@@ -47,12 +49,14 @@ const PasswordInput = forwardRef(({
           type={showPwd ? 'text' : 'password'}
           value={value}
           invalid={!!error}
-          icon={icon}
           onChange={event => onChange(event.currentTarget.value)}
+          icon={icon}
+          themeOverride={themeOverride}
         />
         <ActionIcon
           className='className'
           onClick={() => setShowPwd(current => !current)}
+          themeOverride={themeOverride}
         >
           {showPwd ? 'openIcon' : 'closeIcon'}
         </ActionIcon>

@@ -1,10 +1,10 @@
 import React from "react";
-import { DefaultProps, Theme } from "@buu/types";
+import { DefaultProps, BuuColor, useBuuTheme } from "@buu/theme";
 import Text from "../Text/Text";
-import ActionIcon from "../components/ActionIcon/ActionIcon";
+import ActionIcon from "../ActionIcon/ActionIcon";
 
 interface NotificationProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>, 'title'> {
-    theme?: Theme;
+    color?: BuuColor;
     icon?: React.ReactNode;
     title?: React.ReactNode;
     onClose(): void;
@@ -12,11 +12,12 @@ interface NotificationProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivEl
 
 export default function Notification({
     className,
-    theme = 'muted',
+    color = 'blue',
     title,
     icon,
     children,
     onClose,
+    themeOverride,
     ...others
 }: NotificationProps) {
     return (
@@ -27,17 +28,17 @@ export default function Notification({
             {icon && <div className="icon">{icon}</div>}
             <div className="body">
                 {title && (
-                    <Text className="title" size="sm">
+                    <Text className="title" size="sm" semibold themeOverride={themeOverride}>
                         {title}
                     </Text>
                 )}
 
-                <Text className="description" size="sm">
+                <Text className="description" size="sm" themeOverride={themeOverride}>
                     {children}
                 </Text>
             </div>
 
-            <ActionIcon onClick={onClose}>
+            <ActionIcon onClick={onClose} themeOverride={themeOverride}>
                 cross2icon
             </ActionIcon>
         </div>

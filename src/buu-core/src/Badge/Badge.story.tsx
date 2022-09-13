@@ -1,21 +1,24 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { COLOR_THEME_LIST } from "@buu/types";
-import { BuuProvider } from '@buu/theme'
+import { BuuProvider, DEFAULT_THEME, BuuColor } from '@buu/theme'
 import ElementsGroup from "../ElementsGroup/ElementsGroup";
 import Badge from "./Badge";
 
-const badges = COLOR_THEME_LIST.map(color => {
+const colors = Object.keys(DEFAULT_THEME.colors).filter(
+  (color) => color !== 'white' && color !== 'black'
+);
+
+const badges = colors.map((color: BuuColor) => {
   return <Badge color={color} key={color}>{color}</Badge>
 })
 
-const pills = COLOR_THEME_LIST.map((color) => (
+const pills = colors.map((color: BuuColor) => (
   <Badge color={color} key={color} variant="pill">
     {color}
   </Badge>
 ));
 
-const outlines = COLOR_THEME_LIST.map((color) => (
+const outlines = colors.map((color: BuuColor) => (
   <Badge color={color} key={color} variant="outline">
     {color}
   </Badge>

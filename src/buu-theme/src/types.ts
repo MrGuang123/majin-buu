@@ -5,21 +5,28 @@ export type BuuSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 export type BuuColor = Exclude<keyof OpenColor, 'white' | 'black'>
 
-type HeadingStyle = [number, number]
+type HeadingStyle = readonly [number, number]
 
 export interface BuuTheme {
-    __buu_theme: boolean;
-    colors: OpenColor;
-    fontFamily: string;
-    primaryColor: BuuColor;
-    fontSize: {
+    readonly __buu_theme: boolean;
+    readonly colors: OpenColor;
+    readonly fontFamily: string;
+    readonly primaryColor: BuuColor;
+    readonly fontSize: {
         xs: number;
         sm: number;
         md: number;
         lg: number;
         xl: number;
     };
-    headings: {
+    readonly spacing: {
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        xl: number;
+    };
+    readonly headings: {
         h1: HeadingStyle;
         h2: HeadingStyle;
         h3: HeadingStyle;
@@ -37,5 +44,5 @@ export type BuuThemeOverride = Partial<Omit<BuuTheme, '__buu_theme'>>
 export interface DefaultProps {
     className?: string;
     style?: CSSProperties;
-    themeOverride?: BuuThemeOverride;
+    readonly themeOverride?: BuuThemeOverride;
 }

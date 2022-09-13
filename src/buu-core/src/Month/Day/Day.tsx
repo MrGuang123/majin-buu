@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultProps } from "@buu/types";
+import { DefaultProps, useBuuTheme } from "@buu/theme";
 
 interface DayProps extends DefaultProps {
     value: Date;
@@ -21,7 +21,8 @@ export default function Day({
     onClick,
     elementRef,
     onKeyDown,
-    disableOutsideEvents
+    disableOutsideEvents,
+    themeOverride
 }: DayProps) {
     return (
         <button

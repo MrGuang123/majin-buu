@@ -1,5 +1,5 @@
 import React from 'react'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps } from '@buu/theme'
 
 interface ColorSwatchProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     color: string;

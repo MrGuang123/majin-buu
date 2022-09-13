@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { DefaultProps } from "@buu/types";
+import { DefaultProps } from "@buu/theme";
 
 interface DropdownBodyProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>, 'ref'> {
   children: React.ReactNode;

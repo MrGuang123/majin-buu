@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { useId } from '@buu/hooks'
-import { DefaultProps } from "@buu/types";
+import { DefaultProps, useBuuTheme } from "@buu/theme";
 import InputWrapper, { InputWrapperBaseProps } from "../InputWrapper/InputWrapper";
 
 interface SelectItem {
@@ -32,6 +32,7 @@ const Select = forwardRef(({
     onChange,
     placeholder,
     disabled,
+    themeOverride,
     ...others
 }: SelectProps, ref: React.ForwardedRef<HTMLSelectElement>) => {
     const uuid = useId(id)
@@ -58,6 +59,7 @@ const Select = forwardRef(({
             error={error}
             className={className}
             style={style}
+            themeOverride={themeOverride}
         >
             <div className="wrapper">
                 <select
@@ -72,6 +74,7 @@ const Select = forwardRef(({
                 >
                     {options}
                 </select>
+
                 classesIcon
             </div>
         </InputWrapper>

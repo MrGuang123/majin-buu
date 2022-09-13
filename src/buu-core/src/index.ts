@@ -1,4 +1,4 @@
-export { BuuProvider, useBuuTheme, theming as buuTheming } from '@buu/theme'
+export * from '@buu/theme'
 export { default as ActionIcon } from './ActionIcon/ActionIcon'
 export { default as Anchor } from './Anchor/Anchor'
 export { default as Avatar } from './Avatar/Avatar'

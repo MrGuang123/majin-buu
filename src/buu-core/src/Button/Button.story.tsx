@@ -1,35 +1,38 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { COLOR_THEME_LIST } from '@buu/types'
-import { BuuProvider } from '@buu/theme'
+import { BuuColor, BuuProvider, BuuSize, DEFAULT_THEME } from '@buu/theme'
 import ElementsGroup from '../ElementsGroup/ElementsGroup'
 import Button from './Button'
 
-const xs = COLOR_THEME_LIST.map((theme) => (
+const colors = Object.keys(DEFAULT_THEME.colors).filter(
+  (color) => color !== 'white' && color !== 'black'
+) as BuuColor[];
+
+const xs = colors.map((theme) => (
   <Button color={theme} key={theme} size="xs">
     {`${theme} xs`}
   </Button>
 ));
 
-const sm = COLOR_THEME_LIST.map((theme) => (
+const sm = colors.map((theme) => (
   <Button color={theme} key={theme} size="sm">
     {`${theme} sm`}
   </Button>
 ));
 
-const md = COLOR_THEME_LIST.map((theme) => (
+const md = colors.map((theme) => (
   <Button color={theme} key={theme} size="md">
     {`${theme} md`}
   </Button>
 ));
 
-const lg = COLOR_THEME_LIST.map((theme) => (
+const lg = colors.map((theme) => (
   <Button color={theme} key={theme} size="lg">
     {`${theme} lg`}
   </Button>
 ));
 
-const xl = COLOR_THEME_LIST.map((theme) => (
+const xl = colors.map((theme) => (
   <Button color={theme} key={theme} size="xl">
     {`${theme} xl`}
   </Button>

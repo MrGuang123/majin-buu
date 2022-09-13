@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { nanoid } from "nanoid";
-import { DefaultProps } from '@buu/types'
+import { DefaultProps } from '@buu/theme'
 import { TagPickerTag, TagPickerColor } from "./types";
 import TagPicker from "./TagPicker/TagPicker";
 

@@ -1,18 +1,19 @@
 import React from "react";
-import { DefaultProps, ColorThemeList } from "@buu/types";
+import { DefaultProps, BuuColor, useBuuTheme } from "@buu/theme";
 
 interface LoaderProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     size?: number;
-    color?: ColorThemeList;
+    color?: BuuColor;
 }
 
 export default function Loader({
     className,
     size = 36,
-    color = 'blue',
+    color,
     style,
     ...others
 }: LoaderProps) {
+    const theme = useBuuTheme()
     return (
         <div
             {...others}

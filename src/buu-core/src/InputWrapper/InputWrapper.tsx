@@ -31,7 +31,7 @@ const InputWrapper = ({
       )}
       {children}
       {error && (
-        <Text theme='danger' size='sm' className='error'>{error}</Text>
+        <Text color='red' size='sm' className='error'>{error}</Text>
       )}
     </div>
   )

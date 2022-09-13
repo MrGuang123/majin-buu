@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { DefaultProps } from "@buu/types";
-import { useBuuTheme } from '@buu/theme'
+import { useBuuTheme, DefaultProps } from '@buu/theme'
 
 interface AvatarProps extends DefaultProps, Omit<React.HTMLProps<HTMLDivElement>, 'ref'> {
     src: string;

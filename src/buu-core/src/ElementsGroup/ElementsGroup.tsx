@@ -1,13 +1,14 @@
 import React from 'react'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps, useBuuTheme, BuuSize } from '@buu/theme'
 
 
 export type ElementsGroupPosition = 'right' | 'center' | 'left'
+export type ElementsGroupSpacig = BuuSize | number;
 interface ElementsGroupProps extends DefaultProps, React.HTMLProps<HTMLDivElement> {
     position?: ElementsGroupPosition;
     noWrap?: boolean;
     grow?: boolean;
-    spacing?: number;
+    spacing?: ElementsGroupSpacig;
 }
 
 const ElementsGroup = ({
@@ -16,7 +17,8 @@ const ElementsGroup = ({
     children,
     noWrap = false,
     grow = false,
-    spacing = 10,
+    spacing = 'md',
+    themeOverride,
     ...others
 }: ElementsGroupProps) => {
     return (

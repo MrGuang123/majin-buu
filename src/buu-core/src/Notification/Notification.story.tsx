@@ -6,7 +6,7 @@ import Notification from './Notification';
 storiesOf('@mantine/core', module).add('Notification', () => (
     <div style={{ maxWidth: 400 }}>
         <Notification
-            theme="muted"
+            color="blue"
             onClose={() => { }}
             title="Muted notification with icon"
             icon="FaceIcon"
@@ -15,7 +15,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="success"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Sucess notification with icon"
@@ -25,7 +25,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="danger"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Danger notification with icon"
@@ -35,7 +35,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="warning"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Warning notification with icon"
@@ -45,7 +45,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="primary"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Primary notification with icon"
@@ -55,7 +55,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="muted"
+            color="blue"
             onClose={() => { }}
             title="Muted notification without icon"
             style={{ marginTop: 20 }}
@@ -64,7 +64,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="success"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Sucess notification without icon"
@@ -73,7 +73,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="danger"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Danger notification without icon"
@@ -82,7 +82,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="warning"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Warning notification without icon"
@@ -91,7 +91,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="primary"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Primary notification"
@@ -100,7 +100,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="muted"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Notification with a lot of content"
@@ -111,7 +111,7 @@ storiesOf('@mantine/core', module).add('Notification', () => (
         </Notification>
 
         <Notification
-            theme="primary"
+            color="blue"
             onClose={() => { }}
             style={{ marginTop: 20 }}
             title="Icon notification with a lot of content"
@@ -122,11 +122,11 @@ storiesOf('@mantine/core', module).add('Notification', () => (
             doloremque. Cumque.
         </Notification>
 
-        <Notification theme="muted" onClose={() => { }} style={{ marginTop: 20 }}>
+        <Notification color="blue" onClose={() => { }} style={{ marginTop: 20 }}>
             Notification without title
         </Notification>
 
-        <Notification theme="success" onClose={() => { }} style={{ marginTop: 20 }} icon="CheckIcon">
+        <Notification color="blue" onClose={() => { }} style={{ marginTop: 20 }} icon="CheckIcon">
             Notification without title but with icon
         </Notification>
     </div>

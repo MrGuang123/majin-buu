@@ -1,11 +1,12 @@
 import React from "react";
-import { COLOR_THEME_LIST } from "@buu/types";
 import { storiesOf } from "@storybook/react";
-import { BuuProvider } from '@buu/theme'
+import { BuuProvider, DEFAULT_THEME } from '@buu/theme'
 import ElementsGroup from "../ElementsGroup/ElementsGroup";
 import ColorSwatch from "./ColorSwatch";
 
-const swatches = COLOR_THEME_LIST.map(theme => <ColorSwatch color={theme} key={theme} />)
+const swatches = Object.keys(DEFAULT_THEME.colors)
+    .filter((color) => color !== 'white' && color !== 'black')
+    .map((theme) => <ColorSwatch color="blue" key={theme} />);
 
 storiesOf('@buu/core', module).add('ColorSwatch', () => {
     return (

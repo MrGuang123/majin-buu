@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Text } from "@buu/core";
+import { Input, Text, useBuuTheme, BuuThemeOverride } from "@buu/core";
 import TagItem from "../TagItem/TagItem";
 import { TagPickerColor, TagPickerTag } from "../types";
 import TagBadge from "../TagBadge/TagBadge";
@@ -24,6 +24,7 @@ export interface TagsListProps {
   onChange(value: TagPickerTag): void;
   onHoveredChange(index: number): void;
   onEventsCaptureChange(shouldCaptureEvents: boolean): void;
+  themeOverride?: BuuThemeOverride;
 }
 
 const TagList = ({
@@ -43,7 +44,8 @@ const TagList = ({
   onTagUpdate,
   onChange,
   onHoveredChange,
-  onEventsCaptureChange
+  onEventsCaptureChange,
+  themeOverride
 }: TagsListProps) => {
   const tags = data.map((tag, index) => (
     <TagItem
@@ -72,7 +74,7 @@ const TagList = ({
         autoFocus
       />
       {description && (
-        <Text theme="muted" size="sm" className="description">
+        <Text color="gray" size="sm" className="description">
           {description}
         </Text>
       )}

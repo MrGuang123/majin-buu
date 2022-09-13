@@ -1,5 +1,5 @@
 import React from 'react'
-import { DefaultProps } from '@buu/types'
+import { DefaultProps, useBuuTheme } from '@buu/theme'
 
 interface TableProps extends DefaultProps, React.HTMLProps<HTMLTableElement> {
   striped?: boolean;
@@ -11,6 +11,7 @@ const Table = ({
   children,
   striped = false,
   highlightOnHover = false,
+  themeOverride,
   ...others
 }: TableProps) => {
   return (
