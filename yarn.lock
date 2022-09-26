@@ -1241,6 +1241,11 @@
   resolved "https://registry.npmmirror.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@charlietango/use-focus-trap@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@charlietango/use-focus-trap/-/use-focus-trap-1.4.0.tgz#0299eb5c38f10936cc29a0361e9dda3664e69964"
+  integrity sha512-M/t4N7UxJ8tRBP+u8xB77m49vugcaZ241x9Q92PTJaJUS3lAWTKC2itSebKMlIUyN1Xz7C1zz7cnOynPDeBdLA==
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.npmmirror.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"

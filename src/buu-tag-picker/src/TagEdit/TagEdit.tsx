@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useClickOutside } from '@buu/hooks'
+import useFocusTrap from '@charlietango/use-focus-trap'
 import { DropdownBody, Input, ActionIcon, ColorSwatch } from "@buu/core";
 import { useBuuTheme, BuuThemeOverride } from "@buu/theme";
 import { TagPickerColor, TagPickerTag } from "../types";
@@ -31,6 +32,7 @@ const TagEdit = ({
   const [values, setValues] = useState<Omit<TagPickerTag, 'id'>>()
   const handleNameChange = (value: string) => setValues(current => ({ ...current, name: value }))
   const handleColorChange = (value: string) => setValues(current => ({ ...current, color: value }))
+  const focusTrapRef = useFocusTrap()
 
   const handleSubmit = () => {
     onTagUpdate(id, { name: values.name, color: values.color })
@@ -78,25 +80,27 @@ const TagEdit = ({
       noPadding
       onKeyDownCapture={handleKeyDownCapture}
     >
-      <div className="header">
-        <Input
-          className="input"
-          value={values.name}
-          onChange={event => handleNameChange(event.currentTarget.value)}
-          onKeyDown={event => event.nativeEvent.code === 'Enter' && handleSubmit()}
-          autoFocus
-        />
-        <ActionIcon color="teal" onClick={handleSubmit}>
-          checkIcon
-        </ActionIcon>
+      <div ref={focusTrapRef}>
+        <div ref="header">
+          <Input
+            className="input"
+            value={values.name}
+            onChange={event => handleNameChange(event.currentTarget.value)}
+            onKeyDown={event => event.nativeEvent.code === 'Enter' && handleSubmit()}
+            autoFocus
+          />
+          <ActionIcon color="teal" onClick={handleSubmit}>
+            checkIcon
+          </ActionIcon>
+        </div>
+
+        <button className="deleteControl" type="button" onClick={handleDelete}>
+          TrashIcon
+          <span className="deleteLabel">{deleteLabel}</span>
+        </button>
+
+        <div className="colorsList">{colorsList}</div>
       </div>
-
-      <button className="deleteControl" type="button" onClick={handleDelete}>
-        TrashIcon
-        <span className="deleteLabel">{deleteLabel}</span>
-      </button>
-
-      <div className="colorsList">{colorsList}</div>
     </DropdownBody>
   )
 }

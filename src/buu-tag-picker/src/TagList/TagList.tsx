@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import useFocusTrap from '@charlietango/use-focus-trap'
 import { Input, Text, useBuuTheme, BuuThemeOverride } from "@buu/core";
 import TagItem from "../TagItem/TagItem";
 import { TagPickerColor, TagPickerTag } from "../types";
@@ -24,6 +25,7 @@ export interface TagsListProps {
   onChange(value: TagPickerTag): void;
   onHoveredChange(index: number): void;
   onEventsCaptureChange(shouldCaptureEvents: boolean): void;
+  onArrowsCaptureChange(shouldCaptureArrowEvents: boolean): void;
   themeOverride?: BuuThemeOverride;
 }
 
@@ -45,8 +47,11 @@ const TagList = ({
   onChange,
   onHoveredChange,
   onEventsCaptureChange,
+  onArrowsCaptureChange,
   themeOverride
 }: TagsListProps) => {
+  const focusTrapRef = useFocusTrap()
+
   const tags = data.map((tag, index) => (
     <TagItem
       key={tag.id}
@@ -64,14 +69,18 @@ const TagList = ({
   ))
 
   return (
-    <div className="tagsList">
+    <div className="tagsList" ref={focusTrapRef}>
       <Input
         className="searchInput"
         placeholder={searchPlaceholder}
         value={searchQuery}
         onChange={event => onSearchChange(event.currentTarget.value)}
+        onFocus={() => onArrowsCaptureChange(true)}
+        onBlur={() => {
+          onHoveredChange(-1)
+          onArrowsCaptureChange(false)
+        }}
         icon={`icon`}
-        autoFocus
       />
       {description && (
         <Text color="gray" size="sm" className="description">

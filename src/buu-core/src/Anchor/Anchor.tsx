@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import Text from '../Text/Text'
 
-type HTMLAnchorProps = Omit<React.HTMLProps<HTMLAnchorElement>, 'size'>
+type HTMLAnchorProps = Omit<React.HTMLProps<HTMLAnchorElement>, 'size' | 'color'>
 interface AnchorProps extends React.ComponentProps<typeof Text>, HTMLAnchorProps { }
 
 const Anchor = forwardRef(({ className, children, ...others }: AnchorProps, ref: React.ForwardedRef<HTMLAnchorElement>) => (
@@ -9,7 +9,7 @@ const Anchor = forwardRef(({ className, children, ...others }: AnchorProps, ref:
         component="a"
         className="anchor"
         ref={ref}
-        theme="primary"
+        color="blue"
         {...others}
     >
         {children}
